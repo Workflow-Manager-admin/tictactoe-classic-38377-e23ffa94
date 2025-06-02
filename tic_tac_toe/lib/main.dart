@@ -133,15 +133,23 @@ class _TicTacToeHomePageState extends State<TicTacToeHomePage> {
     /// Checks if the given player has won the game.
     // Check rows and columns
     for (int i = 0; i < gridSize; i++) {
-      if (_board[i].every((cell) => cell == player)) return true;
+      if (_board[i].every((cell) => cell == player)) {
+        return true;
+      }
       if (List.generate(gridSize, (j) => _board[j][i])
-          .every((cell) => cell == player)) return true;
+          .every((cell) => cell == player)) {
+        return true;
+      }
     }
     // Check diagonals
     if (List.generate(gridSize, (idx) => _board[idx][idx])
-        .every((cell) => cell == player)) return true;
+        .every((cell) => cell == player)) {
+      return true;
+    }
     if (List.generate(gridSize, (idx) => _board[idx][gridSize - 1 - idx])
-        .every((cell) => cell == player)) return true;
+        .every((cell) => cell == player)) {
+      return true;
+    }
     return false;
   }
 
@@ -150,7 +158,9 @@ class _TicTacToeHomePageState extends State<TicTacToeHomePage> {
     /// Checks if the board is full and no winner (draw).
     for (int i = 0; i < gridSize; i++) {
       for (int j = 0; j < gridSize; j++) {
-        if (_board[i][j] == PlayerSymbol.none) return false;
+        if (_board[i][j] == PlayerSymbol.none) {
+          return false;
+        }
       }
     }
     // If board is full and there's no win, it's a draw
@@ -209,7 +219,7 @@ class _TicTacToeHomePageState extends State<TicTacToeHomePage> {
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: primaryColor.withOpacity(0.04),
+                      color: primaryColor.withAlpha(10), // Roughly 0.04 opacity
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
