@@ -19,18 +19,19 @@ void main() {
 
     // There should be 9 grid buttons (cells)
     final gridButtons = find.byType(ElevatedButton);
-    expect(gridButtons, findsWidgets); // More than 9 due to reset
-    // But at least 9 cell buttons for grid
+    // More than 9 due to reset, filter cell buttons
     int gridCellCount = 0;
-    await tester.widgetList(gridButtons).forEach((element) {
-      if (element is ElevatedButton &&
-          (element.child is Text &&
-              ((element.child as Text).data == "" ||
-                  (element.child as Text).data == "X" ||
-                  (element.child as Text).data == "O"))) {
-        gridCellCount++;
+    final List<ElevatedButton> buttonWidgets =
+        tester.widgetList(gridButtons).whereType<ElevatedButton>().toList();
+
+    for (final btn in buttonWidgets) {
+      if (btn.child is Text) {
+        final label = (btn.child as Text).data ?? "";
+        if (label == "" || label == "X" || label == "O") {
+          gridCellCount++;
+        }
       }
-    });
+    }
     expect(gridCellCount, equals(9));
   });
 }
