@@ -1,0 +1,1 @@
+{"is_source_file": true, "file_id": 128, "git_revision": "", "state": 1, "description": "", "external_files": [], "external_methods": [], "published": [], "classes": [], "methods": [], "calls": [], "search-terms": [], "hash": "56cbfb30eeffebd73d19029e932cd66c", "format-version": 4, "code-base-name": "default", "filename": "tic_tac_toe/README.md", "knowledge_revision": 129}
